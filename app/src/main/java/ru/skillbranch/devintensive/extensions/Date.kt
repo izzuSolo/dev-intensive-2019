@@ -36,7 +36,7 @@ fun Date.humanizeDiff(date: Date = Date()):String{
     when(abs(timeDiff)){
         in(0 .. 1 * SECOND) -> timeString = "только что"
 
-        in(1 * SECOND .. 45 * SECOND) -> timeString = if(timeDiff > 0)"${TimeUnits.SECOND.plural((abs(timeDiff)/ SECOND).toInt())} назад" else "через ${TimeUnits.SECOND.plural((abs(timeDiff)/ SECOND).toInt())}"
+        in(1 * SECOND .. 45 * SECOND) -> timeString = if(timeDiff > 0)"несколько секунд назад" else "через несколько секунд"
 
         in(45 * SECOND .. 75 * SECOND) -> timeString = if(timeDiff > 0) "минуту назад" else "через минуту"
 
