@@ -86,6 +86,6 @@ object Utils {
     fun toInitials(firstName: String?, lastName: String?): String?{
         val firstChar: String = firstName?.capitalize()?.getOrNull(0)?.toString()?:""
         val lastChar: String = lastName?.capitalize()?.getOrNull(0)?.toString()?:""
-        return "${if(firstChar.plus(lastChar).isBlank()) null else firstChar.plus(lastChar)}"
+        return if(firstChar.plus(lastChar).isBlank()) null else "${firstChar.plus(lastChar)}"
     }
 }
