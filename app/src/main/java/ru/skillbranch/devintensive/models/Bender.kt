@@ -64,7 +64,7 @@ class Bender(var status:Status = Status.NORMAL, var question: Question = Questio
         MATERIAL("Из чего я сделан?", listOf("металл", "дерево", "metal", "iron","wood")){
             override fun nextQuestion(): Question = BDAY
             override fun validate(answer: String): String =
-                if(answer.trim().matches(Regex("\\d+")).not()){"Отлично - ты справился"}
+                if(answer.trim().matches(Regex("^\\D*$"))){"Отлично - ты справился"}
                 else {"Материал не должен содержать цифр"}
         },
         BDAY("Когда меня создали?", listOf("2993")){
