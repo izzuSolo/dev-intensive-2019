@@ -17,20 +17,21 @@ class Bender(var status:Status = Status.NORMAL, var question: Question = Questio
         return validateAnswer(answer) to status.color
     }
 
-    fun validateAnswer(answer:String) :String = if(question.answer.contains(answer.toLowerCase())){
-        if(question.validate(answer).equals("Отлично - ты справился")){
+    fun validateAnswer(answer: String): String = if (question.validate(answer).equals("Отлично - ты справился")) {
+        if (question.answer.contains(answer.toLowerCase())) {
             question = question.nextQuestion()
             "Отлично - ты справился\n${question.question}"
+        } else if (status == Status.CRITICAL) {
+            status = Status.NORMAL
+            "Это неправильный ответ. Давай все по новой\n${Question.NAME.question}"
         } else {
-            "${question.validate(answer)}\n${question.question}"
+            status = status.nextStatus()
+            "Это неправильный ответ\n${question.question}"
         }
-    } else if(status == Status.CRITICAL){
-        status = Status.NORMAL
-        "Это неправильный ответ. Давай все по новой\n${Question.NAME.question}"
     } else {
-        status = status.nextStatus()
-        "Это неправильный ответ\n${question.question}"
+        "${question.validate(answer)}\n${question.question}"
     }
+
 
 
     enum class Status(val color: Triple<Int, Int, Int>){
