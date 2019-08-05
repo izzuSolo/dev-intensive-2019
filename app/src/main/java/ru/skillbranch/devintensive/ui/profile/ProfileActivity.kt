@@ -19,15 +19,25 @@ import ru.skillbranch.devintensive.extensions.hideKeyboard
 
 class ProfileActivity : AppCompatActivity(){
 
+    companion object{
+        const val IS_EDIT_MODE = "IS_EDIT_MODE"
+    }
+    var isEditMode = false
+    lateinit var viewFields : Map<String, TextView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile_constraint)
+        setContentView(R.layout.activity_profile)
+        initViews(savedInstanceState)
 
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
+    }
+
+    private fun initViews(savedInstanceState: Bundle?) {
+
     }
 }
 
