@@ -17,13 +17,14 @@ import ru.skillbranch.devintensive.R
 import ru.skillbranch.devintensive.models.Bender
 import ru.skillbranch.devintensive.extensions.hideKeyboard
 
-class ProfileActivity : AppCompatActivity(){
+class ProfileActivity : AppCompatActivity() {
 
-    companion object{
+    companion object {
         const val IS_EDIT_MODE = "IS_EDIT_MODE"
     }
+
     var isEditMode = false
-    lateinit var viewFields : Map<String, TextView>
+    lateinit var viewFields: Map<String, TextView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +38,27 @@ class ProfileActivity : AppCompatActivity(){
     }
 
     private fun initViews(savedInstanceState: Bundle?) {
+        viewFields = mapOf(
+            "nickname" to tv_nick_name,
+            "rank" to tv_rank,
+            "firstName" to et_first_name,
+            "lastName" to et_last_name,
+            "about" to et_about,
+            "repository" to et_repository,
+            "rating" to tv_rating,
+            "respect" to tv_respect
+        )
 
+
+        btn_edit.setOnClickListener(View.OnClickListener {
+            isEditMode = !isEditMode
+            showCurrentMode(isEditMode)
+        })
+
+    }
+
+    private fun showCurrentMode(isEdit: Boolean) {
+        val info = viewFields.filter {setOf("firstName", "lastName", "about", "repository").contains(it.key)}
     }
 }
 
