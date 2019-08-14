@@ -35,11 +35,8 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun initViews(savedInstanceState: Bundle?) {
 
-        isEditMode = savedInstanceState?.getBoolean(IS_EDIT_MODE, false) ?: false
-        showCurrentMode(isEditMode)
-
         viewFields = mapOf(
-            "nickname" to tv_nick_name,
+            "nickName" to tv_nick_name,
             "rank" to tv_rank,
             "firstName" to et_first_name,
             "lastName" to et_last_name,
@@ -49,6 +46,8 @@ class ProfileActivity : AppCompatActivity() {
             "respect" to tv_respect
         )
 
+        isEditMode = savedInstanceState?.getBoolean(IS_EDIT_MODE, false) ?: false
+        showCurrentMode(isEditMode)
 
         btn_edit.setOnClickListener(View.OnClickListener {
             isEditMode = !isEditMode
