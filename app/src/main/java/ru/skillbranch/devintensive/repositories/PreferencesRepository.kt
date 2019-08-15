@@ -8,7 +8,7 @@ object PreferencesRepository {
 TODO("not implement")
     }
 
-    fun saveProfileData(profile: Profile) {
+    fun saveProfile(profile: Profile) {
 
     }
 
